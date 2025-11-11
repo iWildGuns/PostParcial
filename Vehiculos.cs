@@ -23,6 +23,7 @@ public abstract class Vehiculo : IReproducirMusica
         Anio = anio;
     }
     public abstract void Reproducir();
+    public string getId { get { return Id.ToString(); } }
 }
 
 public class Auto : Vehiculo

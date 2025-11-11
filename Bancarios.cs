@@ -9,12 +9,14 @@ Clases hijas: CajaAhorro (con tasa de interés) y CuentaCorriente (con límite d
 
 public abstract class Cuenta
 {
-    protected int NumCuenta { get; set; }
+    protected string? NumCuenta { get; set; }
     protected string? Titular { get; set; }
     protected float Saldo { get; set; }
     public Cuenta() : base() { System.Console.WriteLine("Se ha creado la cuenta con exito"); }
     public Cuenta(string titular, float saldo)
     {
+        Random rnd = new();
+        NumCuenta = rnd.Next(1111, 9999).ToString();
         Titular = titular;
         Saldo = saldo;
     }

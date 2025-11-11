@@ -109,6 +109,40 @@ class Program
 
         Auto a1 = new();
 
+        List<Vehiculo> ListaVehiculos = [];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         a1.Reproducir();
 
         // Listado de elementos 
