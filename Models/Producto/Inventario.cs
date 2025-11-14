@@ -21,7 +21,7 @@ public abstract class Producto
         Nombre = nombre;
         PrecioBase = precioBase;
     }
-    public int getId { get { return Id; } }
+    public int GetId { get { return Id; } }
 }
 public class ProductoAlimenticio : Producto
 {

@@ -12,9 +12,9 @@ public abstract class Vehiculo : IReproducirMusica
     protected int Id { get; set; }
     protected string? Marca { get; set; }
     protected string? Modelo { get; set; }
-    protected int Anio { get; set; }
+    protected string? Anio { get; set; }
     public Vehiculo() { System.Console.WriteLine("Se ha creado el vehiculo con exito"); }
-    public Vehiculo(string marca, string modelo, int anio)
+    public Vehiculo(string marca, string modelo, string anio)
     {
         Random rdm = new Random();
         Id = rdm.Next(1111, 9999);
@@ -23,14 +23,21 @@ public abstract class Vehiculo : IReproducirMusica
         Anio = anio;
     }
     public abstract void Reproducir();
-    public string getId { get { return Id.ToString(); } }
+    public int GetId { get { return Id; } }
+    public string GetMarca { get { return Marca!; } }
+    public string GetModelo { get { return Modelo!; } }
+    public string GetAnio { get { return Anio!; } }
+    public int SetId(int id) { return Id = id; }
+    public string SetMarca(string marca) { return Marca = marca; }
+    public string SetModelo(string modelo) { return Modelo = modelo; }
+    public string SetAnio(string anio) { return Anio = anio; }
 }
 
 public class Auto : Vehiculo
 {
     protected int CanitdadDePuertas { get; set; }
     public Auto() : base() { System.Console.WriteLine("Auto creado..."); }
-    public Auto(string marca, string modelo, int anio, int cantidadDePuertas) : base(marca, modelo, anio) { CanitdadDePuertas = cantidadDePuertas; }
+    public Auto(string marca, string modelo, string anio, int cantidadDePuertas) : base(marca, modelo, anio) { CanitdadDePuertas = cantidadDePuertas; }
 
     public override void Reproducir()
     {
@@ -41,7 +48,7 @@ public class Moto : Vehiculo
 {
     protected int Cilindrada { get; set; }
     public Moto() : base() { System.Console.WriteLine("Moto creada..."); }
-    public Moto(string marca, string modelo, int anio, int cilindrada) : base(marca, modelo, anio) { Cilindrada = cilindrada; }
+    public Moto(string marca, string modelo, string anio, int cilindrada) : base(marca, modelo, anio) { Cilindrada = cilindrada; }
     public override void Reproducir()
     {
         System.Console.WriteLine($"*Suenan los aldeanos*");
@@ -51,33 +58,33 @@ public class Camion : Vehiculo
 {
     protected float CapacidadDeCarga { get; set; }
     public Camion() : base() { System.Console.WriteLine("Camion creado..."); }
-    public Camion(string marca, string modelo, int anio, float capacidadDeCarga) : base(marca, modelo, anio) { CapacidadDeCarga = capacidadDeCarga; }
+    public Camion(string marca, string modelo, string anio, float capacidadDeCarga) : base(marca, modelo, anio) { CapacidadDeCarga = capacidadDeCarga; }
     public override void Reproducir()
     {
         System.Console.WriteLine($"Suena cualquier cosa");
     }
 }
 
-public static class VehiculoFactory
-{
-    public static Vehiculo crearVehiculo(string tipoVehiculo)
-    {
-        string tipo = tipoVehiculo.ToLower();
-        if (tipo != "")
-        {
-            switch (tipo)
-            {
-                case "auto":
-                    return new Auto();
-                case "moto":
-                    return new Moto();
-                case "camion":
-                    return new Camion();
-                default:
-                    System.Console.WriteLine($"El tipo de vehiculo {tipo} no es correcto");
-                    return null!;
-            }
-        }
-        throw new NotImplementedException();
-    }
-}
+// public static class VehiculoFactory
+// {
+//     public static Vehiculo crearVehiculo(string tipoVehiculo)
+//     {
+//         string tipo = tipoVehiculo.ToLower();
+//         if (tipo != "")
+//         {
+//             switch (tipo)
+//             {
+//                 case "auto":
+//                     return new Auto();
+//                 case "moto":
+//                     return new Moto();
+//                 case "camion":
+//                     return new Camion();
+//                 default:
+//                     System.Console.WriteLine($"El tipo de vehiculo {tipo} no es correcto");
+//                     return null!;
+//             }
+//         }
+//         throw new NotImplementedException();
+//     }
+// }

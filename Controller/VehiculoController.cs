@@ -1,23 +1,34 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace DOOProgram;
 
-public static class VehiculoController()
+public class VehiculoController()
 {
     public static void AgregarVehiculo(Vehiculo v)
     {
         Program.ListVe.Add(v);
         System.Console.WriteLine($"Agregado");
     }
-    public static Vehiculo seleccionarVehiculo(Vehiculo v)
+    public static void SeleccionarVehiculoPorId(int id)
     {
-
-        void editarVehiculo(string marca, string modelo, int anio)
+        foreach (Vehiculo item in Program.ListVe)
         {
-            v.SetMarca(marca);
-            v.SetModelo(modelo);
-            v.SetAnio(anio);
+            if (item.GetId == id)
+            {
+                System.Console.WriteLine($"Vehiculo {item.GetMarca}, Modelo {item.GetModelo} del año {item.GetAnio}");
+                return;
+            }
         }
-        System.Console.WriteLine("Vehiculo Modificado Correctamente...");
-        return v;
+        System.Console.WriteLine("Vehiculo no encontrado");
+        return;
+    }
+    public static void EditarVehiculo(Vehiculo v, string marca, string modelo, string anio)
+    {
+        v.SetMarca(marca);
+        v.SetModelo(modelo);
+        v.SetAnio(anio);
+        Console.WriteLine("Vehiculo Modificado Correctamente...");
+        return;
     }
     public static void EliminarVehiculo(Vehiculo v)
     {
